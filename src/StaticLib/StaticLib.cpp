@@ -23,6 +23,7 @@ static int partition(item* data1,int L,int R)
 	do {
 		do {
 			m++;
+			if (m > R)break;
 		} while (data1[m].key < data1[pivot].key);
 		do {
 			n--;
