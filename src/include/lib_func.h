@@ -14,7 +14,7 @@ extern "C" {
 	}item;
 
 	// クイックソート(引数が不適切であればfalseを返す)
-	bool quick_sort(item *begin, const item* end);
+	bool quick_sort(item* begin, const item* end);
 
 	// C++ でCのライブラリを使うときのおまじない
 #ifdef __cplusplus
