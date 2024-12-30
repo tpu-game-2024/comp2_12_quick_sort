@@ -17,23 +17,24 @@ static int partition(item* data1,int L,int R)
 {
 
 	int pivot = L;
+	int m = L;
+	int n = R + 1;
 
-	for (L = 0; L < R; L++) {
+	do {
 		do {
-			L++;
-		} while (data1[L].key < data1[pivot].key);
+			m++;
+		} while (data1[m].key < data1[pivot].key);
 		do {
-			R--;
-		} while (data1[pivot].key < data1[R].key);
-		if (L < R) {
-			swap(&data1[L], &data1[R]);
-			break;
+			n--;
+		} while (data1[pivot].key < data1[n].key);
+		if (m < n) {
+			swap(&data1[m], &data1[n]);
 		}
-	}
+	} while (m < n);
 
-	swap(&data1[pivot], &data1[R]);
+	swap(&data1[pivot], &data1[n]);
 
-	return R;
+	return n;
 }
 
 void My_quick_sort(item* begin, int L, int R) 
@@ -53,7 +54,7 @@ bool quick_sort(item* begin, const item* end)
 	int L, R;
 
 	L = ARRAY_HEAD;//配列の先頭
-	R = (int)(end - begin);//配列の要素数
+	R = (int)(end - begin) - 1;//配列の要素数
 
 	if (begin == NULL || end == NULL)return false;
 	if (begin > end)return false;
